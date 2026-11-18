@@ -519,6 +519,9 @@ footer nav a:hover{color:var(--ink)}
   .collage button:nth-child(n+3){display:none}
   .mdash .ybars{height:150px}
 }
+
+/* stacked cards: reading pause before next card covers */
+@media(min-width:981px) and (min-height:641px){.chap:not(:last-child){margin-bottom:22vh}}
 </style>
 </head>
 <body>
@@ -796,7 +799,7 @@ function stackFx(){
   chaps.forEach((c,i)=>{const n=chaps[i+1];if(!n){c.style.transform="";return}
     const r=n.getBoundingClientRect(),cr=c.getBoundingClientRect();
     const p=Math.min(Math.max((cr.bottom-r.top)/cr.height,0),1);
-    c.style.transform=`scale(${1-p*.05})`;c.style.filter=`brightness(${1-p*.18})`;});
+    c.style.transform=`scale(${1-p*.1})`;c.style.filter=`brightness(${1-p*.25})`;c.style.borderRadius=`${34+p*10}px`;});
 }
 if(matchMedia("(min-width:981px)").matches)addEventListener("scroll",stackFx,{passive:true});
 
