@@ -289,9 +289,8 @@ section{padding-block:clamp(80px,10vw,128px)}
 .mq-h{display:flex;justify-content:center;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:1.4px;color:var(--wine);margin-bottom:18px}
 .mq-h::before,.mq-h::after{content:"";width:36px;height:1px;background:var(--wine);opacity:.5}
 .mq-box{position:relative}
-.track{display:flex;gap:16px;direction:ltr;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;scrollbar-width:none;padding:6px clamp(18px,4vw,40px) 10px}
+.track{display:flex;gap:16px;direction:ltr;overflow-x:auto;scrollbar-width:none;padding:6px clamp(18px,4vw,40px) 10px}
 .track::-webkit-scrollbar{display:none}
-.track button{scroll-snap-align:center}
 .mq-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 10px 24px -12px rgba(18,19,24,.35);display:grid;place-items:center;transition:background .2s,border-color .2s}
 .mq-btn svg{width:20px;height:20px;fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .mq-btn:hover{background:var(--wine);border-color:var(--wine)}
@@ -693,22 +692,30 @@ addEventListener("scroll",onScroll,{passive:true});onScroll();
 /* marquee: all proof screenshots */
 const ALL=BRANDS.flatMap(b=>b.p);
 const items=ALL.map(([f,c])=>`<button data-src="img/${f}" data-cap="${c}" class="zoom"><img src="img/${f}" alt="${c}" loading="lazy"></button>`).join("");
-$("#track").innerHTML=items;
+$("#track").innerHTML=items+items.replace(/class="zoom"/g,'class="zoom" tabindex="-1" aria-hidden="true"');
 const track=$("#track");
 const step=()=>{const b=track.querySelector("button");return b?b.offsetWidth+16:300};
-let auto=null,idle=null;
-function go(dir){const max=track.scrollWidth-track.clientWidth;
-  if(dir>0&&track.scrollLeft>=max-4){track.scrollTo({left:0});return}
-  if(dir<0&&track.scrollLeft<=4){track.scrollTo({left:max});return}
-  track.scrollBy({left:dir*step()})}
-/* السهم اليمين = السابق، الشمال = التالي (اتجاه عربي) */
-$("#mqNext").onclick=()=>{pause();go(1)};
-$("#mqPrev").onclick=()=>{pause();go(-1)};
-function startAuto(){if(reduce)return;clearInterval(auto);auto=setInterval(()=>go(1),3200)}
-function pause(){clearInterval(auto);clearTimeout(idle);idle=setTimeout(startAuto,8000)}
-track.addEventListener("pointerdown",pause);track.addEventListener("wheel",pause,{passive:true});
-$(".mq").addEventListener("mouseenter",()=>clearInterval(auto));$(".mq").addEventListener("mouseleave",startAuto);
-startAuto();
+const half=()=>track.scrollWidth/2;
+/* حركة مستمرة بطيئة */
+const SPEED=0.35;           /* بكسل لكل فريم: زوّد الرقم = أسرع */
+let paused=false,resume=null,pos=0;
+function loop(){
+  if(!paused){pos+=SPEED;if(pos>=half())pos-=half();track.scrollLeft=pos}
+  requestAnimationFrame(loop)}
+function hold(ms){paused=true;clearTimeout(resume);if(ms)resume=setTimeout(()=>{pos=track.scrollLeft;paused=false},ms)}
+function go(dir){hold(4000);let t=track.scrollLeft+dir*step();
+  if(t<0){track.scrollLeft+=half();t+=half()}
+  if(t>=half()){track.scrollLeft-=half();t-=half()}
+  track.scrollTo({left:t,behavior:"smooth"})}
+/* السهم اليمين يحرّك لليمين، والشمال للشمال */
+$("#mqPrev").onclick=()=>go(1);
+$("#mqNext").onclick=()=>go(-1);
+track.addEventListener("pointerdown",()=>hold(5000));
+track.addEventListener("wheel",()=>hold(5000),{passive:true});
+track.addEventListener("touchstart",()=>hold(5000),{passive:true});
+$(".mq").addEventListener("mouseenter",()=>hold(0));
+$(".mq").addEventListener("mouseleave",()=>hold(600));
+if(!reduce)requestAnimationFrame(loop);
 
 /* chapters */
 $("#snapP").setAttribute("d",LOGOS.snap.d);
