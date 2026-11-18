@@ -484,9 +484,12 @@ footer nav a:hover{color:var(--ink)}
 /* ===== cleanup v8: unified cards ===== */
 .steps4,.sv4{display:grid;gap:16px}
 .steps4{grid-template-columns:repeat(4,1fr)}
-.sv4{grid-template-columns:repeat(2,1fr)}
+.sv4{grid-template-columns:repeat(6,1fr)}
+.sv4 .s4{grid-column:span 2}
+.sv4 .s4:nth-child(-n+2){grid-column:span 3}
+@media(max-width:980px){.sv4{grid-template-columns:1fr 1fr}.sv4 .s4,.sv4 .s4:nth-child(-n+2){grid-column:span 1}.sv4 .s4:last-child{grid-column:1/-1}}
 @media(max-width:980px){.steps4{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.steps4,.sv4{grid-template-columns:1fr}}
+@media(max-width:600px){.steps4,.sv4{grid-template-columns:1fr}.sv4 .s4,.sv4 .s4:nth-child(-n+2),.sv4 .s4:last-child{grid-column:auto}}
 .st4,.s4{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,2.4vw,30px);transition:border-color .25s,transform .25s}
 .st4:hover,.s4:hover{border-color:rgba(166,30,43,.35);transform:translateY(-3px)}
 .n4{display:block;font-family:var(--head);font-weight:700;font-size:clamp(34px,3.4vw,46px);line-height:1;color:var(--wine);letter-spacing:-1.5px;margin-bottom:16px;direction:ltr;text-align:right}
@@ -599,12 +602,13 @@ footer nav a:hover{color:var(--ink)}
 <!-- ================= SERVICES ================= -->
 <section id="services" class="alt">
   <div class="wrap">
-    <div class="sh rv"><div><span class="tag">الخدمات</span><h2>اللي أستلمه عنك</h2></div><p>أربع أشياء، كلها مربوطة بهدف واحد: مبيعات أكثر بتكلفة أقل.</p></div>
+    <div class="sh rv"><div><span class="tag">الخدمات</span><h2>اللي أستلمه عنك</h2></div><p>خمس أشياء، كلها مربوطة بهدف واحد: مبيعات أكثر بتكلفة أقل.</p></div>
     <div class="sv4">
       <div class="s4 rv"><span class="n4">01</span><h3>إدارة الحملات الإعلانية</h3><p>سناب وجوجل وتيك توك وميتا، بهدف مبيعات وROAS، مو مشاهدات.</p></div>
-      <div class="s4 rv"><span class="n4">02</span><h3>تتبع وتقارير</h3><p>ربط البكسل والتحويلات، وتقرير أسبوعي يوضح ربحك الحقيقي من كل منصة.</p></div>
-      <div class="s4 rv"><span class="n4">03</span><h3>متجر سلة ومتابعة الطلبات</h3><p>الطلبات المتأخرة والمنتجات والعروض، عشان ما يضيع طلب ولا يزعل عميل.</p></div>
-      <div class="s4 rv"><span class="n4">04</span><h3>CRM وتكرار الشراء</h3><p>السلال المتروكة، ورسائل واتساب، وعروض للعملاء الحاليين عشان يرجعون يطلبون.</p></div>
+      <div class="s4 rv"><span class="n4">02</span><h3>صناعة محتوى يواكب السوق</h3><p>فيديوهات قصيرة وأفكار إعلانات مبنية على الترندات وطريقة كلام العميل السعودي، تتجدد باستمرار عشان الإعلان ما يبهت.</p></div>
+      <div class="s4 rv"><span class="n4">03</span><h3>تتبع وتقارير</h3><p>ربط البكسل والتحويلات، وتقرير أسبوعي يوضح ربحك الحقيقي من كل منصة.</p></div>
+      <div class="s4 rv"><span class="n4">04</span><h3>متجر سلة ومتابعة الطلبات</h3><p>الطلبات المتأخرة والمنتجات والعروض، عشان ما يضيع طلب ولا يزعل عميل.</p></div>
+      <div class="s4 rv"><span class="n4">05</span><h3>CRM وتكرار الشراء</h3><p>السلال المتروكة، ورسائل واتساب، وعروض للعملاء الحاليين عشان يرجعون يطلبون.</p></div>
     </div>
   </div>
 </section>
