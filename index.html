@@ -147,6 +147,24 @@ section{padding-block:clamp(80px,10vw,128px)}
 @media(max-width:520px){.float{padding:9px 12px}.float b{font-size:15px}.float .fi{width:32px;height:32px}.f1{top:-30px}}
 
 
+
+/* ================= HEADER: floating capsule ================= */
+.top{position:fixed;inset:14px 0 auto;z-index:50;padding-inline:clamp(12px,3vw,24px);background:none!important;border:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;pointer-events:none}
+.pnav{pointer-events:auto;max-width:1040px;margin-inline:auto;height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 8px 0 10px;padding-inline-start:16px;border-radius:999px;background:rgba(255,255,255,.78);border:1px solid rgba(228,221,211,.9);backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);box-shadow:0 1px 2px rgba(18,19,24,.04);transition:box-shadow .3s,background .3s}
+.top.s .pnav{background:rgba(255,255,255,.92);box-shadow:0 14px 34px -18px rgba(18,19,24,.28)}
+.pnav .mark{width:34px;height:34px;border-radius:10px;font-size:13px}
+.pnav .mark::after{width:8px;height:8px;border-color:#fff}
+.pnav .wm{font-size:16px}
+.pnav .nav{display:flex;gap:2px;font-size:14.5px;font-weight:500;position:relative}
+.pnav .nav a{padding:7px 14px;border-radius:999px;color:var(--muted);transition:color .2s,background .2s}
+.pnav .nav a:hover{color:var(--ink);background:var(--soft)}
+.pnav .nav a.on{color:var(--ink);background:var(--soft)}
+.pcta{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border-radius:999px;background:var(--ink);color:#fff;font-weight:600;font-size:14.5px;white-space:nowrap;transition:background .2s,transform .2s}
+.pcta:hover{background:var(--wine);transform:translateY(-1px)}
+.pcta svg{width:18px;height:18px}
+@media(max-width:860px){.pnav .nav{display:none}}
+@media(max-width:520px){.pnav{height:54px}.pcta span{display:none}.pcta{width:42px;padding:0;justify-content:center}}
+
 /* ================= HERO v7 (proof visual) ================= */
 .hx{position:relative;padding-top:calc(var(--hh) + clamp(44px,6vw,84px));padding-bottom:clamp(60px,7vw,90px);overflow:hidden;border-bottom:1px solid var(--line)}
 .hx::before{content:"";position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(166,30,43,.10),transparent 62%);left:-320px;top:-260px;z-index:-1;pointer-events:none}
@@ -270,8 +288,17 @@ section{padding-block:clamp(80px,10vw,128px)}
 .mq{direction:ltr;padding-block:28px 34px;overflow:hidden;border-block:1px solid var(--line);background:var(--card)}
 .mq-h{display:flex;justify-content:center;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:1.4px;color:var(--wine);margin-bottom:18px}
 .mq-h::before,.mq-h::after{content:"";width:36px;height:1px;background:var(--wine);opacity:.5}
-.track{display:flex;gap:16px;width:max-content;direction:ltr;animation:mq 60s linear infinite}
-.mq:hover .track{animation-play-state:paused}
+.mq-box{position:relative}
+.track{display:flex;gap:16px;direction:ltr;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;scrollbar-width:none;padding:6px clamp(18px,4vw,40px) 10px}
+.track::-webkit-scrollbar{display:none}
+.track button{scroll-snap-align:center}
+.mq-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 10px 24px -12px rgba(18,19,24,.35);display:grid;place-items:center;transition:background .2s,border-color .2s}
+.mq-btn svg{width:20px;height:20px;fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.mq-btn:hover{background:var(--wine);border-color:var(--wine)}
+.mq-btn:hover svg{stroke:#fff}
+.mq-btn.prev{right:clamp(10px,2vw,24px)}
+.mq-btn.next{left:clamp(10px,2vw,24px)}
+@media(max-width:600px){.mq-btn{width:38px;height:38px}}
 @keyframes mq{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.track{animation:none}}
 .track button{height:150px;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff;flex:none;cursor:zoom-in;transition:transform .25s}
@@ -431,10 +458,10 @@ footer nav a:hover{color:var(--ink)}
 <body>
 
 <header class="top" id="top">
-  <div class="wrap">
-    <a href="#" class="logo" aria-label="Ibrahim Elkholy"><span class="mark">IE</span><span class="wm">Ibrahim Elkholy<small>Marketing Manager · Media Buyer</small></span></a>
-    <nav class="nav" aria-label="الأقسام"><a href="#results">النتائج</a><a href="#why">ليش أنا</a><a href="#services">الخدمات</a><a href="#faq">أسئلة شائعة</a></nav>
-    <a class="btn btn-wine wa" href="#"><svg viewBox="0 0 24 24" fill="#fff"><use href="#wa-i"/></svg><span>كلمني واتساب</span></a>
+  <div class="pnav">
+    <a href="#" class="logo" aria-label="Ibrahim Elkholy"><span class="mark">IE</span><span class="wm">Ibrahim Elkholy</span></a>
+    <nav class="nav" aria-label="الأقسام"><a href="#results">النتائج</a><a href="#why">ليش أنا</a><a href="#services">الخدمات</a><a href="#faq">أسئلة</a></nav>
+    <a class="pcta wa" href="#"><svg viewBox="0 0 24 24" fill="#fff"><use href="#wa-i"/></svg><span>تواصل معي</span></a>
   </div>
 </header>
 
@@ -468,7 +495,11 @@ footer nav a:hover{color:var(--ink)}
 <!-- ================= PROOF MARQUEE ================= -->
 <div class="mq" aria-label="سكرينات من الحسابات">
   <div class="mq-h">سكرينات حقيقية من الحسابات اللي أديرها</div>
-  <div class="track" id="track"></div>
+  <div class="mq-box">
+    <button class="mq-btn prev" id="mqPrev" aria-label="السابق"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+    <div class="track" id="track"></div>
+    <button class="mq-btn next" id="mqNext" aria-label="التالي"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+  </div>
 </div>
 
 <!-- ================= KPI BAND ================= -->
@@ -650,7 +681,10 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 $$(".wa").forEach(a=>{a.href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(WA_MSG);a.target="_blank";a.rel="noopener"});
 $("#yr").textContent=new Date().getFullYear();
-const hdr=$("#top");addEventListener("scroll",()=>hdr.classList.toggle("s",scrollY>10),{passive:true});
+const hdr=$("#top");
+const navA=$$(".pnav .nav a"),navS=navA.map(a=>document.querySelector(a.getAttribute("href")));
+function onScroll(){hdr.classList.toggle("s",scrollY>10);let cur=-1;navS.forEach((sec,i)=>{if(sec&&sec.getBoundingClientRect().top<140)cur=i});navA.forEach((a,i)=>a.classList.toggle("on",i===cur))}
+addEventListener("scroll",onScroll,{passive:true});onScroll();
 
 /* platform chips */
 
@@ -659,7 +693,22 @@ const hdr=$("#top");addEventListener("scroll",()=>hdr.classList.toggle("s",scrol
 /* marquee: all proof screenshots */
 const ALL=BRANDS.flatMap(b=>b.p);
 const items=ALL.map(([f,c])=>`<button data-src="img/${f}" data-cap="${c}" class="zoom"><img src="img/${f}" alt="${c}" loading="lazy"></button>`).join("");
-$("#track").innerHTML=items+items.replace(/class="zoom"/g,'class="zoom" tabindex="-1" aria-hidden="true"');
+$("#track").innerHTML=items;
+const track=$("#track");
+const step=()=>{const b=track.querySelector("button");return b?b.offsetWidth+16:300};
+let auto=null,idle=null;
+function go(dir){const max=track.scrollWidth-track.clientWidth;
+  if(dir>0&&track.scrollLeft>=max-4){track.scrollTo({left:0});return}
+  if(dir<0&&track.scrollLeft<=4){track.scrollTo({left:max});return}
+  track.scrollBy({left:dir*step()})}
+/* السهم اليمين = السابق، الشمال = التالي (اتجاه عربي) */
+$("#mqNext").onclick=()=>{pause();go(1)};
+$("#mqPrev").onclick=()=>{pause();go(-1)};
+function startAuto(){if(reduce)return;clearInterval(auto);auto=setInterval(()=>go(1),3200)}
+function pause(){clearInterval(auto);clearTimeout(idle);idle=setTimeout(startAuto,8000)}
+track.addEventListener("pointerdown",pause);track.addEventListener("wheel",pause,{passive:true});
+$(".mq").addEventListener("mouseenter",()=>clearInterval(auto));$(".mq").addEventListener("mouseleave",startAuto);
+startAuto();
 
 /* chapters */
 $("#snapP").setAttribute("d",LOGOS.snap.d);
