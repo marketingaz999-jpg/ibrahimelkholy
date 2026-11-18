@@ -172,8 +172,8 @@ section{padding-block:clamp(80px,10vw,128px)}
 .hgr{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(30px,5vw,70px);align-items:center}
 @media(max-width:980px){.hgr{grid-template-columns:1fr}}
 .hp{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:13.5px;font-weight:600;color:#55585F}
-.hx h1{font-size:clamp(36px,4.6vw,62px);line-height:1.22;margin-top:22px;letter-spacing:-1px}
-.hx h1 .hl{color:var(--wine);background:linear-gradient(180deg,transparent 64%,rgba(166,30,43,.14) 64%);padding-inline:.06em}
+.hx h1{font-size:clamp(34px,4.2vw,56px);line-height:1.22;margin-top:22px;letter-spacing:-1px}
+.hx h1 .hl{white-space:nowrap;color:var(--wine);background:linear-gradient(180deg,transparent 64%,rgba(166,30,43,.14) 64%);padding-inline:.06em}
 .hld{color:#55585F;font-size:clamp(17px,1.5vw,19px);max-width:540px;margin-top:20px}
 .hct{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
 .hk{display:grid;grid-template-columns:repeat(3,auto);gap:clamp(20px,3vw,40px);margin-top:42px;padding-top:26px;border-top:1px solid var(--line);width:fit-content}
@@ -181,7 +181,7 @@ section{padding-block:clamp(80px,10vw,128px)}
 .hk > div > span{font-size:13px;color:var(--muted)}
 .hk b span{font-size:inherit;color:inherit}
 .hk .w{color:var(--wine)}
-@media(max-width:520px){.hk{grid-template-columns:repeat(3,1fr);width:100%;gap:12px}}
+@media(max-width:520px){.hk{grid-template-columns:repeat(3,1fr);width:100%;gap:12px}.hx h1 .hl{white-space:normal}}
 .hst{position:relative;height:540px}
 .hcd{position:absolute;background:var(--card);border:1px solid #D9D1C4;border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(21,22,27,.35)}
 .hcd .bar{height:30px;display:flex;align-items:center;gap:6px;padding-inline:12px;background:var(--soft);border-bottom:1px solid var(--line)}
@@ -480,6 +480,42 @@ footer nav a:hover{color:var(--ink)}
 .chap.c1 .cstory .cs3,.chap.c3 .cstory .cs3{background:var(--wine-soft)}
 .cstory .cs3 p{opacity:1;font-weight:500}
 @media(max-width:980px){.cstory{grid-template-columns:1fr}}
+
+/* ===== cleanup v8: unified cards ===== */
+.steps4,.sv4{display:grid;gap:16px}
+.steps4{grid-template-columns:repeat(4,1fr)}
+.sv4{grid-template-columns:repeat(2,1fr)}
+@media(max-width:980px){.steps4{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.steps4,.sv4{grid-template-columns:1fr}}
+.st4,.s4{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,2.4vw,30px);transition:border-color .25s,transform .25s}
+.st4:hover,.s4:hover{border-color:rgba(166,30,43,.35);transform:translateY(-3px)}
+.n4{display:block;font-family:var(--head);font-weight:700;font-size:clamp(34px,3.4vw,46px);line-height:1;color:var(--wine);letter-spacing:-1.5px;margin-bottom:16px;direction:ltr;text-align:right}
+.st4 h3,.s4 h3{font-size:clamp(18px,1.6vw,21px);margin-bottom:6px}
+.st4 p,.s4 p{color:var(--muted);font-size:15.5px}
+.alt .s4{background:var(--bg)}
+.cta1{display:block!important;text-align:center}
+.cta1 h2{font-size:clamp(30px,4.2vw,54px);line-height:1.45;max-width:900px;margin-inline:auto}
+.cta1 p{margin-inline:auto}
+.cta1 .cta-row{justify-content:center}
+.cta1 .ph{font-size:15px;margin-top:18px;color:#B9BBC2}
+
+/* ===== store cards: readable shots + mobile story ===== */
+.collage button,.collage button:nth-child(odd),.collage button:nth-child(even){transform:none;aspect-ratio:16/10;background:#fff}
+.collage button:hover{transform:translateY(-3px)}
+.collage img{object-fit:contain;object-position:center;background:#fff}
+.collage.mini button{aspect-ratio:16/10}
+.story-btn{display:none}
+@media(max-width:760px){
+  .story-btn{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;margin-top:22px;padding:14px 18px;border-radius:14px;border:1px solid rgba(127,127,127,.3);font-weight:600;font-size:14.5px;text-align:start}
+  .chap.c2 .story-btn,.chap.c4 .story-btn{color:#fff}
+  .story-btn span{transition:transform .3s}
+  .chap.open .story-btn span{transform:rotate(180deg)}
+  .chap .cstory{display:none}
+  .chap.open .cstory{display:grid}
+  .collage{grid-template-columns:1fr 1fr!important}
+  .collage button:nth-child(n+3){display:none}
+  .mdash .ybars{height:150px}
+}
 </style>
 </head>
 <body>
@@ -487,7 +523,7 @@ footer nav a:hover{color:var(--ink)}
 <header class="top" id="top">
   <div class="pnav">
     <a href="#" class="logo" aria-label="Ibrahim Elkholy"><span class="mark">IE</span><span class="wm">Ibrahim Elkholy</span></a>
-    <nav class="nav" aria-label="الأقسام"><a href="#results">النتائج</a><a href="#why">ليش أنا</a><a href="#services">الخدمات</a><a href="#faq">أسئلة</a></nav>
+    <nav class="nav" aria-label="الأقسام"><a href="#results">النتائج</a><a href="#how">كيف أشتغل</a><a href="#services">الخدمات</a><a href="#faq">أسئلة</a></nav>
     <a class="pcta wa" href="#"><svg viewBox="0 0 24 24" fill="#fff"><use href="#wa-i"/></svg><span>تواصل معي</span></a>
   </div>
 </header>
@@ -529,44 +565,31 @@ footer nav a:hover{color:var(--ink)}
   </div>
 </div>
 
-<!-- ================= KPI BAND ================= -->
-<div class="band">
-  <div class="wrap">
-    <div class="band-h rv"><h2>الأرقام من حسابات أديرها فعلًا</h2><p>من 4 براندات: أثاث منزلي، عسل، كفرات جوال، ومركز خدمات بالحجز. الأرقام من تقارير سلة ومنصات الإعلانات.</p></div>
-    <div class="kpis rv">
-      <div><span class="num"><span data-count="17.7" data-dec="1">0</span><small>مليون ر.س</small></span><span class="lbl">إجمالي المبيعات<small>الأثاث من 2020 + باقي البراندات خلال إدارتي</small></span></div>
-      <div><span class="num"><span data-count="35208">0</span><small>طلب</small></span><span class="lbl">إجمالي الطلبات<small>من نفس المتاجر</small></span></div>
-      <div><span class="num"><span data-count="8.0" data-dec="1">0</span><small>x</small></span><span class="lbl">ROAS الإجمالي<small>الأثاث 2026 + كفرات الجوال</small></span></div>
-      <div><span class="num"><span data-count="611">0</span><small>ألف ر.س</small></span><span class="lbl">إنفاق إعلاني أدرته<small>عبر 4 منصات</small></span></div>
-    </div>
-  </div>
-</div>
-
 <!-- ================= RESULTS: STACKED CHAPTERS ================= -->
 <section id="results">
   <div class="wrap">
-    <div class="sh rv"><div><span class="tag">المتاجر اللي أديرها</span><h2>نتائج حقيقية، مو وعود</h2></div><p>4 براندات في 4 مجالات. كل واحد بأرقامه، وكيف وصلنا لها، وسكرينات من الحسابات نفسها.</p></div>
+    <div class="sh rv"><div><span class="tag">المتاجر اللي أديرها</span><h2>4 متاجر، 4 قصص بالأرقام</h2></div><p>أثاث، وعسل، وكفرات جوال، ومركز حجوزات. في كل متجر: وين كان، وإيش سويت، ووين وصل، مع سكرينات من الحسابات نفسها.</p></div>
     <div class="chaps" id="chaps"></div>
     <p class="closer rv">الأرقام ما تجامل. <span>وهذي أرقامي.</span></p>
   </div>
 </section>
 
-<!-- ================= WHY ME ================= -->
-<section id="why" style="padding-top:40px">
+<!-- ================= HOW I WORK ================= -->
+<section id="how">
   <div class="wrap">
-    <div class="sh rv"><div><span class="tag">ليش تشتغل معي؟</span><h2>منهجية مبنية على التحليل، <br>مو على الاجتهاد</h2></div><p>الفرق بين حملة تصرف وحملة تبيع: إن كل قرار له رقم يبرره.</p></div>
-    <div class="why">
-      <div class="wcard rv"><span class="wi"><svg viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/></svg></span><h3>أرقام، مو انطباعات</h3><p>كل قرار مبني على تقارير سلة والمنصات، وتشوف نفس الأرقام اللي أشوفها.</p></div>
-      <div class="wcard rv"><span class="wi"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg></span><h3>تتعامل معي مباشرة</h3><p>أنا المسؤول عن نتائج حسابك، وتكلمني أنا. بدون ما تضيع بين أقسام وموظفين.</p></div>
-      <div class="wcard rv"><span class="wi"><svg viewBox="0 0 24 24"><path d="M4 7h16l-1.5 12h-13z"/><path d="M9 7a3 3 0 016 0"/></svg></span><h3>خبرة في متاجر سلة</h3><p>من 2020 وأنا أدير تسويق متاجر سعودية على سلة، من أول طلب لين ملايين الريالات.</p></div>
-      <div class="wcard rv"><span class="wi"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>نوقف الهدر بسرعة</h3><p>الإعلان الضعيف يتوقف بدري، والميزانية تروح للي يبيع فعلًا. فلوسك ما تنتظر.</p></div>
+    <div class="sh rv"><div><span class="tag">كيف أشتغل معك</span><h2>من أول رسالة لين أول تقرير</h2></div><p>تتعامل معي مباشرة. ما فيه وسيط، وما فيه حساب يضيع بين موظفين.</p></div>
+    <div class="steps4">
+      <div class="st4 rv"><span class="n4">01</span><h3>أراجع متجرك وحساباتك</h3><p>قبل ما نصرف ريال، أعرف وين الفلوس تتسرب ووين الفرصة.</p></div>
+      <div class="st4 rv"><span class="n4">02</span><h3>خطة مكتوبة بالأرقام</h3><p>المنصات، والميزانية، والهدف من كل منصة. تعرفها قبل ما نبدأ.</p></div>
+      <div class="st4 rv"><span class="n4">03</span><h3>تنفيذ ومتابعة يومية</h3><p>الإعلان الضعيف يتوقف بدري، والميزانية تروح للي يبيع فعلًا.</p></div>
+      <div class="st4 rv"><span class="n4">04</span><h3>تقرير كل أسبوع</h3><p>تشوف نفس الأرقام اللي أشوفها: الإنفاق والطلبات والعائد من كل منصة.</p></div>
     </div>
     <div class="fit rv">
-      <div><span class="tag lt">مناسب لك إذا</span><h3>التسويق مو منشورات حلوة.<br>التسويق <em>أرقام تدخل حسابك.</em></h3><p class="q-note">لو وحدة من هذي تنطبق عليك، خلنا نتكلم.</p></div>
+      <div><span class="tag lt">نشتغل سوا إذا</span><h3>متجرك يبيع، بس تحس إن إعلاناته <em>تقدر تجيب أكثر.</em></h3><p class="q-note">لو وحدة من هذي تنطبق عليك، أرسل لي رابط متجرك.</p></div>
       <ul>
         <li>عندك متجر على سلة وتبي تكبّر مبيعاته بربح، مو بس زيارات.</li>
-        <li>تصرف على الإعلانات وما تعرف بالضبط إيش اللي يجيب مبيعات.</li>
-        <li>جرّبت قبل وما شفت تقارير واضحة وأرقام تقدر تحاسب عليها.</li>
+        <li>تصرف على الإعلانات وما تعرف بالضبط أي منصة تجيب المبيعات.</li>
+        <li>جرّبت قبل وما وصلك تقرير واضح تقدر تحاسب عليه.</li>
         <li>عندك نشاط خدمات وتبي حجوزات أكثر بتكلفة أقل.</li>
       </ul>
     </div>
@@ -576,33 +599,12 @@ footer nav a:hover{color:var(--ink)}
 <!-- ================= SERVICES ================= -->
 <section id="services" class="alt">
   <div class="wrap">
-    <div class="sh rv"><div><span class="tag">الخدمات</span><h2>كل اللي يحتاجه متجرك عشان يبيع أكثر</h2></div><p>من الإعلان لين العميل يرجع يطلب مرة ثانية.</p></div>
-    <div class="svcs">
-      <div class="svc feat rv" data-n="01">
-        <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
-        <h3>إعلانات مبنية على الربح، مو المشاهدات</h3>
-        <p>حملات على سناب وتيك توك وميتا وجوجل هدفها مبيعات وROAS. اختبار مستمر للجماهير والكرييتف، وتوزيع الميزانية على المنصة اللي تبيع فعلًا.</p>
-        <div class="chips"><span><b>4</b> منصات</span><span>ROAS <b>8.0x</b></span><span><b>611K</b> ر.س إنفاق مُدار</span></div>
-      </div>
-      <div class="svc rv" data-n="02"><span class="go"><svg viewBox="0 0 24 24"><path d="M17 7L7 17M7 8v9h9"/></svg></span><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16l-1.5 12h-13z"/><path d="M9 7a3 3 0 016 0"/></svg></span><h3>رفع معدل التحويل</h3><p>صفحات منتجات وعروض وباقات وتجربة دفع على سلة، عشان نفس الزيارات تجيب طلبات أكثر.</p></div>
-      <div class="svc rv" data-n="03"><span class="go"><svg viewBox="0 0 24 24"><path d="M17 7L7 17M7 8v9h9"/></svg></span><span class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2.5"/><path d="M10.5 9.5l4 2.5-4 2.5z"/></svg></span><h3>كرييتف UGC وفيديو قصير</h3><p>هوكات أول 3 ثواني لسناب وتيك توك، واختبار أكثر من زاوية لين نلقى اللي يبيع.</p></div>
-      <div class="svc rv" data-n="04"><span class="go"><svg viewBox="0 0 24 24"><path d="M17 7L7 17M7 8v9h9"/></svg></span><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/></svg></span><h3>تتبع دقيق وقرارات بالأرقام</h3><p>ربط البكسل وConversions API، وتقرير يوضح ربحك الحقيقي من كل منصة.</p></div>
-      <div class="svc rv" data-n="05"><span class="go"><svg viewBox="0 0 24 24"><path d="M17 7L7 17M7 8v9h9"/></svg></span><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h3M8 17h6"/></svg></span><h3>إدارة متجر سلة ومتابعة الطلبات</h3><p>متابعة الطلبات المتأخرة والمنتجات والعروض، عشان ما يضيع طلب ولا يزعل عميل.</p></div>
-      <div class="svc wide rv" data-n="06"><span class="go"><svg viewBox="0 0 24 24"><path d="M17 7L7 17M7 8v9h9"/></svg></span><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0113.7-5.6L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 01-13.7 5.6L4 15"/><path d="M4 20v-5h5"/></svg></span><div><h3>CRM ورفع تكرار الشراء</h3><p>بيانات عملائك مرتبة، واسترجاع السلال المتروكة، ورسائل واتساب وعروض تخلي العميل يرجع يطلب مرة ثانية.</p></div></div>
-    </div>
-    <p class="closer rv">الإعلان بدون متجر يحوّل = فلوس رايحة. <span>عشان كذا أشتغل على الاثنين.</span></p>
-  </div>
-</section>
-
-<!-- ================= PROCESS ================= -->
-<section id="process">
-  <div class="wrap">
-    <div class="sh rv"><div><span class="tag">طريقة العمل</span><h2>4 خطوات، وتعرف وين تروح فلوسك كل أسبوع</h2></div></div>
-    <div class="steps">
-      <div class="step rv"><span class="n">01</span><h3>تحليل</h3><p>أراجع متجرك وحساباتك الإعلانية، وأحدد وين التسريب ووين الفرصة.</p></div>
-      <div class="step rv"><span class="n">02</span><h3>خطة</h3><p>المنصات والميزانية والأهداف بالأرقام، قبل ما نصرف ريال.</p></div>
-      <div class="step rv"><span class="n">03</span><h3>تنفيذ</h3><p>نطلق الحملات ونجهز المتجر والكرييتف ونتابع يوميًا.</p></div>
-      <div class="step rv"><span class="n">04</span><h3>تقرير أسبوعي</h3><p>أرقام كل أسبوع، وتعديلات مبنية عليها.</p></div>
+    <div class="sh rv"><div><span class="tag">الخدمات</span><h2>اللي أستلمه عنك</h2></div><p>أربع أشياء، كلها مربوطة بهدف واحد: مبيعات أكثر بتكلفة أقل.</p></div>
+    <div class="sv4">
+      <div class="s4 rv"><span class="n4">01</span><h3>إدارة الحملات الإعلانية</h3><p>سناب وجوجل وتيك توك وميتا، بهدف مبيعات وROAS، مو مشاهدات.</p></div>
+      <div class="s4 rv"><span class="n4">02</span><h3>تتبع وتقارير</h3><p>ربط البكسل والتحويلات، وتقرير أسبوعي يوضح ربحك الحقيقي من كل منصة.</p></div>
+      <div class="s4 rv"><span class="n4">03</span><h3>متجر سلة ومتابعة الطلبات</h3><p>الطلبات المتأخرة والمنتجات والعروض، عشان ما يضيع طلب ولا يزعل عميل.</p></div>
+      <div class="s4 rv"><span class="n4">04</span><h3>CRM وتكرار الشراء</h3><p>السلال المتروكة، ورسائل واتساب، وعروض للعملاء الحاليين عشان يرجعون يطلبون.</p></div>
     </div>
   </div>
 </section>
@@ -613,7 +615,7 @@ footer nav a:hover{color:var(--ink)}
     <div class="faq-side rv">
       <span class="tag">أسئلة شائعة</span>
       <h2>قبل ما تكلمني</h2>
-      <p>أكثر الأسئلة اللي توصلني من أصحاب المتاجر. لو سؤالك مو هنا، أرسله واتساب.</p>
+      <p>أكثر الأسئلة اللي توصلني من أصحاب المتاجر. سؤالك مو هنا؟ أرسله واتساب وأرد عليك.</p>
       <a class="btn btn-wa wa" href="#"><svg viewBox="0 0 24 24" fill="#fff"><use href="#wa-i"/></svg>اسأل على واتساب</a>
     </div>
     <div class="qs rv">
@@ -630,18 +632,11 @@ footer nav a:hover{color:var(--ink)}
 <!-- ================= FINAL CTA ================= -->
 <section class="final" id="contact">
   <div class="wrap">
-    <div class="cta rv">
-      <div>
-        <h2>جاهز نرفع <span class="stk">مبيعات متجرك</span>؟</h2>
-        <p>أرسل لي رابط متجرك على واتساب، وأرجع لك بملاحظات أولية على حساباتك الإعلانية والمتجر.</p>
-        <div class="cta-row"><a class="btn btn-wa wa" href="#"><svg viewBox="0 0 24 24" fill="#fff"><use href="#wa-i"/></svg>كلمني على واتساب</a></div>
-        <p style="font-size:15px;margin-top:18px">واتساب: <b class="num" style="color:#fff">+966 59 706 7966</b></p>
-      </div>
-      <div class="cta-side">
-        <div><span>مبيعات المتاجر اللي أديرها</span><b class="num">17.7M</b></div>
-        <div><span>طلب</span><b class="num">35,208</b></div>
-        <div><span>أدير متجر الأثاث من</span><b class="num">2020</b></div>
-      </div>
+    <div class="cta cta1 rv">
+      <h2>أرسل لي رابط متجرك.<br><span class="stk">وأقولك وين فلوس إعلاناتك رايحة.</span></h2>
+      <p>أراجع متجرك وحساباتك الإعلانية، وأرجع لك بأول ملاحظاتي على واتساب.</p>
+      <div class="cta-row"><a class="btn btn-wa wa" href="#"><svg viewBox="0 0 24 24" fill="#fff"><use href="#wa-i"/></svg>كلمني على واتساب</a></div>
+      <p class="ph">واتساب: <b class="num" style="color:#fff">+966 59 706 7966</b></p>
     </div>
   </div>
 </section>
@@ -771,6 +766,7 @@ $("#chaps").innerHTML=BRANDS.map((b,i)=>`
     <div class="c-note">🔒 البيانات الحساسة مخفية · اضغط على الصورة لتكبيرها</div>
    </div>
   </div>
+  <button class="story-btn" aria-expanded="false">اقرأ القصة كاملة: التحدي، وإيش سويت، والنتيجة <span>↓</span></button>
   <div class="cstory">
    <div class="cs1"><h5><i>1</i>التحدي</h5><p>${b.ch}</p></div>
    <div class="cs2"><h5><i>2</i>اللي سويته</h5><ul>${b.did.map(x=>`<li>${x}</li>`).join("")}</ul></div>
@@ -816,6 +812,8 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.2,rootMargin:"0px 0px -40px 0px"});
 $$("[data-count],.rv,.growme").forEach(n=>io.observe(n));
 
+/* mobile story toggle */
+document.querySelectorAll(".story-btn").forEach(b=>b.addEventListener("click",()=>{const c=b.closest(".chap");const o=c.classList.toggle("open");b.setAttribute("aria-expanded",o);b.firstChild.textContent=o?"اخفِ القصة ":"اقرأ القصة كاملة: التحدي، وإيش سويت، والنتيجة ";fitSticky&&fitSticky()}));
 /* lightbox */
 const lb=$("#lb");
 const closeLb=()=>{lb.classList.remove("on");document.body.style.overflow=""};
