@@ -146,7 +146,44 @@ section{padding-block:clamp(80px,10vw,128px)}
 @media(max-width:980px){.f1{left:10px}.f2{right:10px}.hgrid > div:last-child{margin-top:34px;margin-bottom:30px}}
 @media(max-width:520px){.float{padding:9px 12px}.float b{font-size:15px}.float .fi{width:32px;height:32px}.f1{top:-30px}}
 
-/* ================= HERO (minimal) ================= */
+
+/* ================= HERO v7 (proof visual) ================= */
+.hx{position:relative;padding-top:calc(var(--hh) + clamp(44px,6vw,84px));padding-bottom:clamp(60px,7vw,90px);overflow:hidden;border-bottom:1px solid var(--line)}
+.hx::before{content:"";position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(166,30,43,.10),transparent 62%);left:-320px;top:-260px;z-index:-1;pointer-events:none}
+.hx::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 60% 55% at 70% 35%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 60% 55% at 70% 35%,#000 20%,transparent 75%)}
+.hgr{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(30px,5vw,70px);align-items:center}
+@media(max-width:980px){.hgr{grid-template-columns:1fr}}
+.hp{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:13.5px;font-weight:600;color:#55585F}
+.hx h1{font-size:clamp(36px,4.6vw,62px);line-height:1.22;margin-top:22px;letter-spacing:-1px}
+.hx h1 .hl{color:var(--wine);background:linear-gradient(180deg,transparent 64%,rgba(166,30,43,.14) 64%);padding-inline:.06em}
+.hld{color:#55585F;font-size:clamp(17px,1.5vw,19px);max-width:540px;margin-top:20px}
+.hct{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hk{display:grid;grid-template-columns:repeat(3,auto);gap:clamp(20px,3vw,40px);margin-top:42px;padding-top:26px;border-top:1px solid var(--line);width:fit-content}
+.hk b{display:block;font-size:clamp(26px,2.8vw,36px);line-height:1.1}
+.hk > div > span{font-size:13px;color:var(--muted)}
+.hk b span{font-size:inherit;color:inherit}
+.hk .w{color:var(--wine)}
+@media(max-width:520px){.hk{grid-template-columns:repeat(3,1fr);width:100%;gap:12px}}
+.hst{position:relative;height:540px}
+.hcd{position:absolute;background:var(--card);border:1px solid #D9D1C4;border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(21,22,27,.35)}
+.hcd .bar{height:30px;display:flex;align-items:center;gap:6px;padding-inline:12px;background:var(--soft);border-bottom:1px solid var(--line)}
+.hcd .bar i{width:8px;height:8px;border-radius:50%;background:#D9D1C4}
+.hcd .bar span{margin-inline-start:auto;font-size:11px;color:var(--muted);direction:ltr}
+.hc1{top:30px;left:0;width:78%;transform:rotate(-3deg)}
+.hc1 img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.hph{position:absolute;right:2%;top:90px;width:42%;border-radius:34px;background:#15161B;padding:8px;box-shadow:0 40px 70px -30px rgba(21,22,27,.5);transform:rotate(4deg)}
+.hph img{border-radius:26px;width:100%;aspect-ratio:9/16;object-fit:cover;object-position:top}
+.hch{position:absolute;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:16px;background:rgba(255,255,255,.92);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 20px 40px -20px rgba(21,22,27,.3);white-space:nowrap;z-index:2}
+.hch .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--wine)}
+.hch .ic svg{width:18px;height:18px}
+.hch b{display:block;font-size:19px;line-height:1.15;text-align:right}
+.hch small{display:block;font-size:12px;color:var(--muted)}
+.hk1{left:-10px;bottom:70px}.hk2{right:-6px;top:14px}
+@media(prefers-reduced-motion:no-preference){.hk1{animation:fl 6s ease-in-out infinite}.hk2{animation:fl 6s 3s ease-in-out infinite}}
+@media(max-width:980px){.hst{height:460px;max-width:560px;margin-inline:auto;width:100%}}
+@media(max-width:520px){.hst{height:380px}.hch{padding:9px 12px}.hch b{font-size:16px}.hk1{left:0;bottom:30px}.hk2{right:0}}
+
+/* ================= HERO (minimal, unused) ================= */
 .hm{padding-top:calc(var(--hh) + clamp(70px,10vw,130px));padding-bottom:clamp(60px,8vw,100px);text-align:center;border-bottom:1px solid var(--line)}
 .hm .wrap{display:flex;flex-direction:column;align-items:center}
 .hm-eye{display:inline-flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;color:var(--muted);letter-spacing:.3px}
@@ -402,21 +439,28 @@ footer nav a:hover{color:var(--ink)}
 </header>
 
 <main>
-<!-- ================= HERO (minimal) ================= -->
-<section class="hm">
-  <div class="wrap">
-    <span class="hm-eye rv"><span class="pulse"></span>Ibrahim Elkholy · مدير تسويق وميديا باير</span>
-    <h1 class="rv">من 200 ألف لـ <span class="stk">5.7 مليون ريال</span><br>مبيعات في السنة</h1>
-    <p class="lead rv">أدير إعلانات المتاجر السعودية على سناب وجوجل وتيك توك وميتا، بخطة واضحة وأرقام تقيسها كل أسبوع.</p>
-    <div class="cta-row rv">
-      <a class="btn btn-wine wa" href="#"><svg viewBox="0 0 24 24" fill="#fff"><use href="#wa-i"/></svg>ابدأ مع متجرك</a>
-      <a class="btn btn-ghost" href="#results">شوف النتائج ←</a>
+<!-- ================= HERO ================= -->
+<section class="hx">
+  <div class="wrap hgr">
+    <div>
+      <span class="hp rv"><span class="pulse"></span>مدير تسويق وميديا باير · للمتاجر السعودية</span>
+      <h1 class="rv">أحوّل إعلانات متجرك<br>إلى <span class="hl">مبيعات تقدر تقيسها</span></h1>
+      <p class="hld rv">مدير تسويق وميديا باير للمتاجر السعودية. متجر أثاث أديره من 2020 كبر من 200 ألف لـ 5.7 مليون ريال في السنة.</p>
+      <div class="hct rv">
+        <a class="btn btn-wine wa" href="#"><svg viewBox="0 0 24 24" fill="#fff"><use href="#wa-i"/></svg>ابدأ مع متجرك</a>
+        <a class="btn btn-ghost" href="#results">شوف النتائج</a>
+      </div>
+      <div class="hk rv">
+        <div><b class="num"><span data-count="17.7" data-dec="1" data-suf="M">0</span></b><span>ريال مبيعات أدرتها</span></div>
+        <div><b class="num"><span data-count="35208">0</span></b><span>طلب</span></div>
+        <div><b class="num w"><span data-count="8.0" data-dec="1" data-suf="x">0</span></b><span>ROAS</span></div>
+      </div>
     </div>
-    <div class="hm-stats rv">
-      <div><b class="num">17.7M</b><span>ر.س مبيعات أدرتها</span></div>
-      <div><b class="num">35K+</b><span>طلب</span></div>
-      <div><b class="num">8.0x</b><span>ROAS</span></div>
-      <div><b class="num">2020</b><span>من سنة</span></div>
+    <div class="hst rv" aria-hidden="true">
+      <div class="hcd hc1"><div class="bar"><i></i><i></i><i></i><span>ads.snapchat.com</span></div><img src="img/snap-overview.jpg" alt=""></div>
+      <div class="hph"><img src="img/salla-2025.jpg" alt=""></div>
+      <div class="hch hk1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M4 17l6-6 4 4 6-7"/><path d="M14 8h6v6"/></svg></span><span><b class="num">+126%</b><small>مبيعات 2025 عن 2024</small></span></div>
+      <div class="hch hk2"><span class="ic" style="background:var(--ink)"><svg viewBox="0 0 24 24"><path id="snapP" fill="#fff"/></svg></span><span><b class="num">12.9x</b><small>ROAS سناب · 2026</small></span></div>
     </div>
   </div>
 </section>
@@ -618,6 +662,7 @@ const items=ALL.map(([f,c])=>`<button data-src="img/${f}" data-cap="${c}" class=
 $("#track").innerHTML=items+items.replace(/class="zoom"/g,'class="zoom" tabindex="-1" aria-hidden="true"');
 
 /* chapters */
+$("#snapP").setAttribute("d",LOGOS.snap.d);
 const DASH=`<div class="mdash growme"><div class="dash-h"><b>مبيعات المتجر السنوية<small>تقارير سلة · ريال سعودي · 2026 حتى أكتوبر</small></b><span class="dash-big" style="margin:0"><span class="num" style="font-size:34px" data-count="28" data-suf="x">0</span></span></div><div class="ybars" id="ybars"></div><div class="ylab" id="ylab"></div></div>`;
 $("#chaps").innerHTML=BRANDS.map((b,i)=>`
  <article class="chap ${b.c}">
