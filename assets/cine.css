@@ -206,3 +206,5 @@ footer .soc a b{font-family:Jost,sans-serif;font-weight:400;letter-spacing:.06em
 footer .soc a span{color:#AEB5BF}
 footer .soc a:hover{border-color:#C9A27E;background:rgba(201,162,126,.08);transform:translateY(-2px)}
 
+
+footer .soc .ico{width:20px;height:20px;flex:none;display:block}
