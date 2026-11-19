@@ -197,3 +197,12 @@ footer .lat{letter-spacing:.35em;color:var(--mute);direction:ltr;display:block;m
 .lead-alt:hover{color:var(--gold2)}
 .lead-form.done label,.lead-form.done .lead-btn{display:none}
 @media(max-width:900px){.cta.lead{grid-template-columns:minmax(0,1fr);gap:40px;padding:90px 6vw}}
+
+/* social accounts */
+footer .soc{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;margin:0 auto 22px;padding-bottom:22px;border-bottom:1px solid rgba(201,162,126,.14);max-width:1100px}
+footer .soc-t{font-size:13px;color:var(--mute,#99A1AD);margin-left:6px}
+footer .soc a{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border:1px solid rgba(201,162,126,.3);border-radius:40px;color:#E9E4DC;font-size:13.5px;transition:.3s;text-decoration:none}
+footer .soc a b{font-family:Jost,sans-serif;font-weight:400;letter-spacing:.06em;color:#E2C4A2}
+footer .soc a span{color:#AEB5BF}
+footer .soc a:hover{border-color:#C9A27E;background:rgba(201,162,126,.08);transform:translateY(-2px)}
+
