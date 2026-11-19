@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=El+Messiri:wght@500;600;700&family=Readex+Pro:wght@200;300;400;500&family=IBM+Plex+Sans+Arabic:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/hero-sales.jpg">
-<link rel="stylesheet" href="assets/cine.css?v=6">
+<link rel="stylesheet" href="assets/cine.css?v=7">
 </head>
 <body data-page="home">
 
@@ -156,10 +156,37 @@
  </div>
 </section>
 
-<section class="cta" id="contact">
- <h2 class="rv">أرسل لي رابط متجرك<br><em>وأقولك وين فلوس إعلاناتك رايحة</em></h2>
- <p class="rv d1">أول خطوة مجانية وبدون التزام: رابط متجرك، وأرجع لك بمراجعة صريحة.</p>
- <a class="wa-big wa rv d2" href="#">أرسل رابط متجرك على واتساب</a>
+<section class="cta lead" id="contact">
+ <div class="lead-txt">
+  <h2 class="rv">أرسل لي رابط متجرك<br><em>وأقولك وين فلوس إعلاناتك رايحة</em></h2>
+  <p class="rv d1">عبّ البيانات، وأتواصل معك بنفسي على الواتساب بمراجعة صريحة لمتجرك وإعلاناتك.</p>
+  <ul class="lead-ok rv d2">
+   <li><i>✓</i>المراجعة الأولى مجانية وبدون التزام</li>
+   <li><i>✓</i>بياناتك ما تنشارك مع أي أحد</li>
+   <li><i>✓</i>أتواصل معك أنا، مو موظف ولا رد آلي</li>
+  </ul>
+ </div>
+ <form class="lead-form rv d1" id="leadForm" novalidate>
+  <h3>اطلب مراجعتك المجانية</h3>
+  <label>الاسم<input name="name" autocomplete="name" required maxlength="80" placeholder="اسمك الكريم"></label>
+  <label>رقم الواتساب<input name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20" placeholder="05xxxxxxxx" dir="ltr"></label>
+  <label>رابط المتجر<input name="store" type="text" inputmode="url" maxlength="200" placeholder="مثال: mystore.com أو رابط سلة" dir="ltr"></label>
+  <label>الميزانية الإعلانية الشهرية
+   <select name="budget" required>
+    <option value="" disabled selected>اختر</option>
+    <option>لسه ما بدأت إعلانات</option>
+    <option>أقل من 5,000 ريال</option>
+    <option>5,000 – 15,000 ريال</option>
+    <option>15,000 – 50,000 ريال</option>
+    <option>أكثر من 50,000 ريال</option>
+   </select>
+  </label>
+  <label>وش أكثر شي يقلقك في إعلاناتك؟ <small>(اختياري)</small><textarea name="note" rows="3" maxlength="600" placeholder="مثال: أصرف كثير والطلبات قليلة"></textarea></label>
+  <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <button type="submit" class="wa-big lead-btn">أرسل طلب المراجعة</button>
+  <p class="lead-msg" id="leadMsg" role="status"></p>
+  <a class="lead-alt wa" href="#">أو كلمني واتساب مباشرة ←</a>
+ </form>
 </section>
 
 <a class="fab wa" id="fab" href="#">واتساب</a>
@@ -167,6 +194,6 @@
 
 <div class="lb-box" id="lbx"><img alt=""></div>
 
-<script src="assets/cine.js?v=4"></script>
+<script src="assets/cine.js?v=7"></script>
 </body>
 </html>
