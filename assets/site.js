@@ -95,7 +95,7 @@ if(!reduce)requestAnimationFrame(loop);
 /* chapters */
 if($("#snapP"))$("#snapP").setAttribute("d",LOGOS.snap.d);
 const DASH=`<div class="mdash growme"><div class="dash-h"><b>مبيعات المتجر السنوية<small>تقارير سلة · ريال سعودي · 2026 حتى أكتوبر</small></b><span class="dash-big" style="margin:0"><span class="num" style="font-size:34px" data-count="28" data-suf="x">0</span></span></div><div class="ybars" id="ybars"></div><div class="ylab" id="ylab"></div></div>`;
-if($("#chaps"))$("#chaps").innerHTML=BRANDS.map((b,i)=>`
+if($("#chaps")&&!$("#chaps").children.length)$("#chaps").innerHTML=BRANDS.map((b,i)=>`
  <article class="chap ${b.c}" id="store-${i+1}">
   <div class="cgrid">
    <div>
