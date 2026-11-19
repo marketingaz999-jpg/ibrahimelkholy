@@ -14,7 +14,7 @@ lbx.onclick=()=>lbx.classList.remove("on");
 
 const fab=document.getElementById("fab");if(fab)addEventListener("scroll",()=>fab.classList.toggle("on",scrollY>innerHeight*.8),{passive:true});
 /* lead form → Google Sheet (Apps Script) */
-const LEAD_URL="";
+const LEAD_URL="https://script.google.com/macros/s/AKfycbw8X1Dy3WkrKDKbObZsLYyjbuV8ug0S0eMF_BVqcvDuBUOXPLIIKUuRNBd31w-DvF6v/exec";
 (function(){
  const f=document.getElementById("leadForm");if(!f)return;
  const msg=document.getElementById("leadMsg"),btn=f.querySelector(".lead-btn"),t0=Date.now();
