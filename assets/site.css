@@ -537,6 +537,3 @@ footer nav a:hover{color:var(--ink)}
 .a2-role{display:inline-block;font-family:var(--head);font-size:.62em;font-weight:600;letter-spacing:.5px;direction:ltr;color:#fff;background:var(--ink);padding:.12em .55em;border-radius:10px;margin:.25em 0 .2em}
 .a2-sig{margin-top:16px;color:var(--muted);font-size:15px}
 .a2-f li b{font-size:clamp(18px,1.8vw,24px)}
-/* perf: dim layer instead of CSS filter */
-.chap{will-change:transform;--dim:0}
-.chap::after{content:"";position:absolute;inset:0;background:#000;opacity:var(--dim);pointer-events:none;border-radius:inherit;z-index:5}

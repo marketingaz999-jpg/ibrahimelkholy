@@ -3,17 +3,16 @@ document.querySelectorAll(".wa").forEach(a=>{a.href="https://wa.me/"+WA+"?text="
 document.getElementById("yr").textContent=new Date().getFullYear();
 const hdr=document.getElementById("top"),hbg=document.getElementById("hbg"),gn=document.getElementById("gname");
 const red=matchMedia("(prefers-reduced-motion: reduce)").matches;
-let scQ=false,lastS=null;
-function sc(){scQ=false;const y=scrollY,s=y>20;if(s!==lastS){hdr.classList.toggle("s",s);lastS=s}
- if(!red&&y<innerHeight*1.3){hbg.style.transform=`translate3d(0,${(y*.25).toFixed(1)}px,0) scale(1.04)`;gn.style.transform=`translate3d(${Math.max(-40,Math.min(40,(innerHeight-y)*.05)).toFixed(1)}px,0,0)`}}
-addEventListener("scroll",()=>{if(!scQ){scQ=true;requestAnimationFrame(sc)}},{passive:true});sc();
+function sc(){const y=scrollY;hdr.classList.toggle("s",y>20);
+ if(!red){hbg.style.transform=`scale(1.04) translateY(${y*.25}px)`;gn.style.setProperty("--x",`${Math.max(-40,Math.min(40,(innerHeight-y)*.05))}px`)}}
+addEventListener("scroll",sc,{passive:true});sc();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll(".rv").forEach(el=>io.observe(el));
 const lbx=document.getElementById("lbx");
 document.querySelectorAll(".zoom").forEach(z=>z.addEventListener("click",e=>{e.stopPropagation();lbx.querySelector("img").src=z.dataset.src;lbx.classList.add("on")}));
 lbx.onclick=()=>lbx.classList.remove("on");
 
-const fab=document.getElementById("fab");if(fab){let fo=null;addEventListener("scroll",()=>{const o=scrollY>innerHeight*.8;if(o!==fo){fab.classList.toggle("on",o);fo=o}},{passive:true})}
+const fab=document.getElementById("fab");if(fab)addEventListener("scroll",()=>fab.classList.toggle("on",scrollY>innerHeight*.8),{passive:true});
 /* lead form → Google Sheet (Apps Script) */
 const LEAD_URL="https://script.google.com/macros/s/AKfycbw8X1Dy3WkrKDKbObZsLYyjbuV8ug0S0eMF_BVqcvDuBUOXPLIIKUuRNBd31w-DvF6v/exec";
 (function(){
