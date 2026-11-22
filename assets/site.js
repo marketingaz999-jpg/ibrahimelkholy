@@ -72,9 +72,10 @@ const step=()=>{const b=track.querySelector("button");return b?b.offsetWidth+16:
 const half=()=>track.scrollWidth/2;
 /* حركة مستمرة بطيئة */
 const SPEED=0.35;           /* بكسل لكل فريم: زوّد الرقم = أسرع */
-let paused=false,resume=null,pos=0;
+let paused=false,resume=null,pos=0,mqOn=true;
+new IntersectionObserver(e=>{mqOn=e[0].isIntersecting},{rootMargin:"100px"}).observe(track);
 function loop(){
-  if(!paused){pos+=SPEED;if(pos>=half())pos-=half();track.scrollLeft=pos}
+  if(!paused&&mqOn){pos+=SPEED;if(pos>=half())pos-=half();track.scrollLeft=pos}
   requestAnimationFrame(loop)}
 function hold(ms){paused=true;clearTimeout(resume);if(ms)resume=setTimeout(()=>{pos=track.scrollLeft;paused=false},ms)}
 function go(dir){hold(4000);let t=track.scrollLeft+dir*step();
@@ -131,14 +132,17 @@ function fitSticky(){
 addEventListener("resize",fitSticky);addEventListener("load",fitSticky);fitSticky();
 /* slight shrink of the card underneath as the next one covers it */
 const chaps=$$(".chap");
+let fxQ=false;
 function stackFx(){
   if(reduce)return;
-  chaps.forEach((c,i)=>{const n=chaps[i+1];if(!n){c.style.transform="";return}
-    const r=n.getBoundingClientRect(),cr=c.getBoundingClientRect();
-    const p=Math.min(Math.max((cr.bottom-r.top)/cr.height,0),1);
-    c.style.transform=`scale(${1-p*.1})`;c.style.filter=`brightness(${1-p*.25})`;c.style.borderRadius=`${34+p*10}px`;});
+  const rs=chaps.map(c=>c.getBoundingClientRect());           /* read all first */
+  chaps.forEach((c,i)=>{
+    if(!chaps[i+1]){c.style.transform="";c.style.setProperty("--dim",0);return}
+    const p=Math.min(Math.max((rs[i].bottom-rs[i+1].top)/rs[i].height,0),1);
+    c.style.transform=`scale(${1-p*.1})`;c.style.setProperty("--dim",(p*.25).toFixed(3));});
+  fxQ=false;
 }
-if(matchMedia("(min-width:981px)").matches)addEventListener("scroll",stackFx,{passive:true});
+if(matchMedia("(min-width:981px)").matches)addEventListener("scroll",()=>{if(!fxQ){fxQ=true;requestAnimationFrame(stackFx)}},{passive:true});
 
 /* count up + reveal + grow */
 function countUp(el){
