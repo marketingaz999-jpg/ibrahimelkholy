@@ -1,0 +1,33 @@
+# Ibrahim Elkholy (إبراهيم الخولي)
+
+> Growth Director and media buyer for Saudi e-commerce stores and brands, mostly on Salla. Runs Snapchat, Google, TikTok and Meta ads tied to real store sales (not platform-reported numbers), plus content, tracking, Salla order follow-up, CRM/repeat purchase and store SEO. Site language: Arabic (Saudi dialect).
+
+Key facts:
+- One furniture store on Salla, managed since launch (~5 years): about 17.6M SAR total sales and ~33,000 orders; annual sales grew from ~200K SAR (first year) to 5.73M SAR in 2025 (~28x).
+- Honey brand: ~201K SAR sales and 727 orders in about two months; Google Ads 20.8K SAR spend vs 332K SAR conversion value (platform-reported).
+- Phone-case store: 8.3x ROAS, ~115K SAR sales in 3 months on TikTok/Snapchat.
+- Services center in Dammam: cost per booking cut from 118 SAR to 42 SAR; 646 bookings in 6 months.
+- All figures come from Salla reports and ad-platform dashboards; screenshots on the site have client names and sensitive data hidden.
+- First step for a new client: free initial review of the store and ad accounts, read-only access, no commitment.
+
+## Pages
+- [Home](https://www.ibrahimelkholy.com/): positioning, four store stories with results, how to start, lead form
+- [Results](https://www.ibrahimelkholy.com/results): detailed case studies for 4 Saudi stores (challenge, what was done, result) with screenshots
+- [Services](https://www.ibrahimelkholy.com/services): how the work runs and the 6 services
+- [Contact](https://www.ibrahimelkholy.com/contact): FAQ and WhatsApp contact
+
+## Services
+- إدارة الحملات الإعلانية: سناب وجوجل وتيك توك وميتا، بهدف مبيعات وROAS، مو مشاهدات.
+- صناعة محتوى يواكب السوق: فيديوهات قصيرة وأفكار إعلانات مبنية على الترندات وطريقة كلام العميل السعودي، تتجدد باستمرار عشان الإعلان ما يبهت.
+- تتبع وتقارير: ربط البكسل والتحويلات، وتقرير أسبوعي يوضح ربحك الحقيقي من كل منصة.
+- متجر سلة ومتابعة الطلبات: الطلبات المتأخرة والمنتجات والعروض، عشان ما يضيع طلب ولا يزعل عميل.
+- CRM وتكرار الشراء: السلال المتروكة، ورسائل واتساب، وعروض للعملاء الحاليين عشان يرجعون يطلبون.
+- سيو المتجر والظهور في جوجل: كلمات يدوّر عليها عميلك فعلًا، وتحسين صفحات المنتجات والأقسام وسرعة المتجر، عشان يجيك زوار من جوجل بدون ما تدفع على كل ضغطة.
+
+## Contact
+- WhatsApp: +966 59 706 7966 (https://wa.me/966597067966)
+- Instagram: https://www.instagram.com/elkholy.marketing/
+- TikTok: https://www.tiktok.com/@iibrahimelkholy
+
+## Optional
+- [Full text for AI assistants](https://www.ibrahimelkholy.com/llms-full.txt)
